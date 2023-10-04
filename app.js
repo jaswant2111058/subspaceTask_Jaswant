@@ -3,7 +3,7 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors')
 const app = express();
-c//onst rateLimit = require('express-rate-limit');
+//const rateLimit = require('express-rate-limit');
 const api = require("./routes/api")
 
 // const limiter = rateLimit({
