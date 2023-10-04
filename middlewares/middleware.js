@@ -94,7 +94,7 @@ exports.search = async (req, res) => {
         
             
             const now = new Date()
-            if((now.getTime()-preTime)>1000*10){
+            if((now.getTime()-preTime)>1000*60){
               fetchData.cache.clear();
               search.cache.clear();
                 fs.writeFile("time.json", JSON.stringify(now.getTime()), (err) => {

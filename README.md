@@ -127,6 +127,7 @@ An optional bonus challenge is implemented using Lodash's `memoize` function:
 - Caches the analytics results and search results for a certain period.
 - If the same requests are made within the caching period, the server returns the cached results instead of re-fetching and re-analyzing the data.
 - The caching mechanism is implemented as an original solution.
+- Time to reCashing the memoize data is define by the devloper that is 1 min before last cashing.
 
 ## Contributing
 
