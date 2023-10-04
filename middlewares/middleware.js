@@ -28,8 +28,15 @@ function searchQuery(query, array) {
     return indxOfsubStr;
 }
 
+
+
+
 const fetchData = _.memoize(callapi)
 const search = _.memoize(searchQuery)
+
+
+
+
 
 exports.status = async (req, res) => {
     try {
@@ -76,19 +83,28 @@ exports.search = async (req, res) => {
             res.status(400).send({ msg: "query is not present" })
         }
         else {
-            const priTime = Number(require('../time.json'))
+          
+            fs.readFile('time.json', 'utf8', async (err, time) => {
+                if (err) {
+                  console.error('Error reading file:', err);
+                  return ;
+                }
+              const  preTime = Number(time);
+              
+        
+            
             const now = new Date()
-            console.log(now.getTime()-priTime)
-           
-            if((now.getTime()-priTime)>1000*60*60){
-              fetchData.cache.clear(); 
+            if((now.getTime()-preTime)>1000*10){
+              fetchData.cache.clear();
               search.cache.clear();
                 fs.writeFile("time.json", JSON.stringify(now.getTime()), (err) => {
                     if (err) console.error(err);
                     else console.log('Time Has Updated');
                 })
             }
-            const data = await fetchData();
+            const data =  await fetchData();
+            //require("../myArrayFile.json")
+
             if (!data) {
                 res.status(500).send({ massage: "data providing server is not working.... wait for a while" })
             }
@@ -101,7 +117,9 @@ exports.search = async (req, res) => {
                 if (foundStrings.length) res.send(foundStrings).status(201)
                 else { res.status(400).send({ massage: `${query} is not founds in titles` }) }
             }
-        }
+        })
+    }
+    
     }
     catch (error) {
         res.status(500).send(error)
