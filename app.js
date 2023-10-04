@@ -3,14 +3,14 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors')
 const app = express();
-const rateLimit = require('express-rate-limit');
+c//onst rateLimit = require('express-rate-limit');
 const api = require("./routes/api")
 
-const limiter = rateLimit({
-    windowMs:  60 * 1000, 
-    max: 100,
-  });
-  app.use(limiter);
+// const limiter = rateLimit({
+//     windowMs:  60 * 1000, 
+//     max: 100,
+//   });
+//   app.use(limiter);
 
 
 app.use(
