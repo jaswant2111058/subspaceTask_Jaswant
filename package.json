@@ -1,7 +1,7 @@
 {
   "name": "subspace_task",
   "version": "1.0.0",
-  "description": "",
+  "description": "Subspace_task",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
